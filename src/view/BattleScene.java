@@ -1,4 +1,7 @@
 package view;
+import java.io.File;
+import java.nio.file.Paths;
+
 import javax.swing.ImageIcon;
 
 import javafx.event.ActionEvent;
@@ -13,12 +16,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class BattleScene implements SceneInterface {
 	
 	private SceneManager sceneManager;
 	private Scene battleScene;
 	private Group root;
+	boolean soundCheck;
 	
 	
 	public BattleScene(SceneManager sceneManager) {
@@ -33,14 +39,46 @@ public class BattleScene implements SceneInterface {
 		
 		root = new Group();
 		
-		battleScene = new Scene(root, width, height, Color.WHITE);
+		battleScene = new Scene(root, width, height);
 	
 		
-		
+	
 		addUnitButtons();
 		addText();
-		
+		addBackground();
+		//addMusic();
 		return battleScene;
+	}
+	
+	
+	private void addMusic() {
+		
+		Media sound = new Media(Paths.get("src/sound/GloomyMeadows.mp3").toUri().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		
+		
+			mediaPlayer.play();
+			
+		
+		
+		
+		
+	}
+	
+	private void addBackground() {
+	//load the image
+		Image background = new Image("img/background.jpg");
+		ImagePattern background1 = new ImagePattern(background);
+		System.out.println("Is Loaded: " +background.isError());
+		ImageView iv = new ImageView();
+		iv.setImage(background);
+	
+		battleScene.setFill(background1);
+		
+		
+
+        
+	    
 	}
 	
 	

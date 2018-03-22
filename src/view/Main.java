@@ -29,7 +29,7 @@ import java.util.ArrayList;
 **/
 
 public class Main extends Application{
-	public static final int SIZE_W = 1050;
+	public static final int SIZE_W = 1250;
 	public static final int SIZE_H = 400;
 	/**
 	 * @param args

@@ -37,8 +37,6 @@ public MainMenu(SceneManager sceneManager) {
 		
 		
 		
-		
-		
 		addStartButton();
 		addAboutButton();
 		addMarketButton();
@@ -94,6 +92,9 @@ public MainMenu(SceneManager sceneManager) {
 		marketButton.setMinHeight(30);
 		marketButton.setFont(Font.font("Verdana", 12));
 		
+		marketButton.setOnAction((ActionEvent e)->{
+			sceneManager.goToMarketScene(sceneManager);
+		});
 		
 		root.getChildren().add(marketButton);
 	}

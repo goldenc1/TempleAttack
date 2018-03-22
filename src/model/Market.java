@@ -28,6 +28,9 @@ public class Market {
 		//TODO
 		return this.funds;
 	}
+	public void setFunds(int funds) {
+		this.funds = funds;
+	}
 	
 
 }

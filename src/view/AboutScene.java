@@ -16,6 +16,7 @@ public class AboutScene implements SceneInterface {
 	private Scene aboutScene;
 	private Group root;
 	
+	//
 	public AboutScene(SceneManager sceneManager) {
 		
 		this.sceneManager = sceneManager;
