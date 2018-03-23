@@ -46,24 +46,11 @@ public class BattleScene implements SceneInterface {
 		addUnitButtons();
 		addText();
 		addBackground();
-		//addMusic();
+		
 		return battleScene;
 	}
 	
 	
-	private void addMusic() {
-		
-		Media sound = new Media(Paths.get("src/sound/GloomyMeadows.mp3").toUri().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		
-		
-			mediaPlayer.play();
-			
-		
-		
-		
-		
-	}
 	
 	private void addBackground() {
 	//load the image
@@ -166,9 +153,17 @@ public class BattleScene implements SceneInterface {
 		pauseButton.setMinHeight(10);
 		pauseButton.setFont(Font.font("Verdana", 12));
 		
+		Button marketButton = new Button();
+		marketButton.setText("Market");
+		marketButton.setLayoutX(810);
+		marketButton.setLayoutY(10);
+		marketButton.setMinWidth(10);
+		marketButton.setMinHeight(10);
+		marketButton.setFont(Font.font("Verdana", 12));
+		
 		Button menuButton = new Button();
 		menuButton.setText("Menu");
-		menuButton.setLayoutX(820);
+		menuButton.setLayoutX(870);
 		menuButton.setLayoutY(10);
 		menuButton.setMinWidth(10);
 		menuButton.setMinHeight(10);
@@ -182,6 +177,14 @@ public class BattleScene implements SceneInterface {
 			}
 		});
 		
+		marketButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+				sceneManager.goToMarketScene(sceneManager);
+			}
+		});
+		
 		
 		root.getChildren().add(unitAButton);
 		root.getChildren().add(unitBButton);
@@ -191,6 +194,7 @@ public class BattleScene implements SceneInterface {
 		root.getChildren().add(spellButton);
 		root.getChildren().add(pauseButton);
 		root.getChildren().add(menuButton);
+		root.getChildren().add(marketButton);
 	}
 
 }

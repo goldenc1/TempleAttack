@@ -39,7 +39,7 @@ public MainMenu(SceneManager sceneManager) {
 		
 		addStartButton();
 		addAboutButton();
-		addMarketButton();
+		addDifficultyButton();
 		
 		return menuScene;
 	}
@@ -83,9 +83,9 @@ public MainMenu(SceneManager sceneManager) {
 		root.getChildren().add(aboutButton);
 	}
 	
-	private void addMarketButton() {
+	private void addDifficultyButton() {
 		Button marketButton = new Button();
-		marketButton.setText("Market");
+		marketButton.setText("Choose Difficulty");
 		marketButton.setLayoutX(450);
 		marketButton.setLayoutY(250);
 		marketButton.setMinWidth(150);

@@ -2,6 +2,7 @@ package view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import view.SceneManager;
 import javafx.scene.Scene;
 import javafx.scene.Group;
@@ -15,7 +16,10 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -51,9 +55,29 @@ public class Main extends Application{
 	SceneManager sceneManager = new SceneManager(primaryStage);
 	
 	sceneManager.goToMenuScene(sceneManager);
+	addMusic();
 	
 	}
 	
+	
+private void addMusic() {
+		
+		Media sound = new Media(Paths.get("src/sound/GloomyMeadows.mp3").toUri().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		
+			
+			mediaPlayer.setOnEndOfMedia(new Runnable() {
+			       public void run() {
+			         mediaPlayer.seek(Duration.ZERO);
+			       }
+			   });
+			  mediaPlayer.play();
+			
+		
+		
+		
+		
+	}
 	
 	
 

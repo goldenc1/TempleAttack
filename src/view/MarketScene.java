@@ -69,7 +69,7 @@ public class MarketScene implements SceneInterface {
 	//adds return button
 	private void addReturnButton() {
 		Button returnButton = new Button();
-		returnButton.setText("Main Menu");
+		returnButton.setText("Return to Battle");
 		returnButton.setLayoutX(400);
 		returnButton.setLayoutY(250);
 		returnButton.setMinWidth(150);
@@ -79,7 +79,7 @@ public class MarketScene implements SceneInterface {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				sceneManager.goToMenuScene(sceneManager);
+				sceneManager.goToBattleScene(sceneManager);
 			}		
 		});
 		root.getChildren().add(returnButton);
