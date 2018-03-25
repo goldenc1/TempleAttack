@@ -97,16 +97,27 @@ public class BattleScene implements SceneInterface {
 	
 	private void addUnitButtons() {
 		Button unitAButton = new Button();
-		unitAButton.setText("Unit A");
-		unitAButton.setLayoutX(100);
+		//unitAButton.setText("Unit A");
+		Image baron = new Image ("img/baron.png");
+		ImageView baronIV = new ImageView(baron);
+		baronIV.setFitHeight(73);
+		baronIV.setFitWidth(50);
+		unitAButton.setGraphic(baronIV);
+		unitAButton.setLayoutX(85);
 		unitAButton.setLayoutY(10);
-		unitAButton.setMinWidth(20);
-		unitAButton.setMinHeight(10);
 		unitAButton.setFont(Font.font("Verdana", 12));
 		
 		
 		Button unitBButton = new Button();
-		unitBButton.setText("Unit B");
+		//unitBButton.setText("Unit B");
+		
+		
+		Image archer = new Image ("img/archer.png");
+		ImageView archerIV = new ImageView(archer);
+		baronIV.setFitHeight(47);
+		baronIV.setFitWidth(60);
+		baronIV.setOpacity(.5);
+		unitBButton.setGraphic(archerIV);
 		unitBButton.setLayoutX(170);
 		unitBButton.setLayoutY(10);
 		unitBButton.setMinWidth(20);
