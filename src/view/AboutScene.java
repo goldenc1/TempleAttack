@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.Market;
 import javafx.scene.control.TextField;
 
 public class AboutScene implements SceneInterface {
@@ -25,7 +26,7 @@ public class AboutScene implements SceneInterface {
 	
 	
 	@Override
-	public Scene init(int width, int height) {
+	public Scene init(int width, int height, Market market) {
 		
 		root = new Group();
 		aboutScene = new Scene(root, width, height, Color.AZURE);

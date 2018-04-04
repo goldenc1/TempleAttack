@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.Market;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.image.*;
@@ -25,6 +26,10 @@ public class BattleScene implements SceneInterface {
 	private Scene battleScene;
 	private Group root;
 	boolean soundCheck;
+	Text bank = new Text();
+	private final int unit1Price = 100;
+	private final int unit2Price = 200;
+	private final int unit3Price = 300;
 	
 	
 	public BattleScene(SceneManager sceneManager) {
@@ -35,7 +40,7 @@ public class BattleScene implements SceneInterface {
 	
 	
 	@Override
-	public Scene init(int width, int height) {
+	public Scene init(int width, int height, Market market) {
 		
 		root = new Group();
 		
@@ -43,8 +48,8 @@ public class BattleScene implements SceneInterface {
 	
 		
 	
-		addUnitButtons();
-		addText();
+		addUnitButtons(market);
+		addText(market);
 		addBackground();
 		
 		return battleScene;
@@ -69,12 +74,11 @@ public class BattleScene implements SceneInterface {
 	}
 	
 	
-	private void addText() {
-	Text bank = new Text();
+	private void addText(Market market) {
 	bank.setFont(Font.font("SanSerif",20));
 	bank.setLayoutX(640);
 	bank.setLayoutY(30);
-	bank.setText("$0.00");
+	bank.setText("$" + market.getFunds());
 	bank.setFill(Color.GOLD);
 	
 	Text level = new Text();
@@ -95,17 +99,28 @@ public class BattleScene implements SceneInterface {
 	}
 	
 	
-	private void addUnitButtons() {
+	private void addUnitButtons(Market market) {
 		Button unitAButton = new Button();
 		//unitAButton.setText("Unit A");
 		Image baron = new Image ("img/baron.png");
 		ImageView baronIV = new ImageView(baron);
-		baronIV.setFitHeight(73);
-		baronIV.setFitWidth(50);
+		baronIV.setFitHeight(30);
+		baronIV.setFitWidth(20);
 		unitAButton.setGraphic(baronIV);
 		unitAButton.setLayoutX(85);
 		unitAButton.setLayoutY(10);
 		unitAButton.setFont(Font.font("Verdana", 12));
+		unitAButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				int currFunds = market.getFunds();
+				if(currFunds >= unit1Price) {
+				currFunds -= unit1Price;
+				market.setFunds(currFunds);
+				bank.setText("$" + market.getFunds() );
+				}
+			}		
+		});
 		
 		
 		Button unitBButton = new Button();
@@ -114,8 +129,8 @@ public class BattleScene implements SceneInterface {
 		
 		Image archer = new Image ("img/archer.png");
 		ImageView archerIV = new ImageView(archer);
-		baronIV.setFitHeight(47);
-		baronIV.setFitWidth(60);
+		baronIV.setFitHeight(30);
+		baronIV.setFitWidth(20);
 		baronIV.setOpacity(.5);
 		unitBButton.setGraphic(archerIV);
 		unitBButton.setLayoutX(170);
@@ -123,6 +138,17 @@ public class BattleScene implements SceneInterface {
 		unitBButton.setMinWidth(20);
 		unitBButton.setMinHeight(10);
 		unitBButton.setFont(Font.font("Verdana", 12));
+		unitBButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				int currFunds = market.getFunds();
+				if(currFunds >= unit2Price) {
+				currFunds -= unit2Price;
+				market.setFunds(currFunds);
+				bank.setText("$" + market.getFunds() );
+				}
+			}		
+		});
 		
 		Button unitCButton = new Button();
 		unitCButton.setText("Unit C");
@@ -131,6 +157,17 @@ public class BattleScene implements SceneInterface {
 		unitCButton.setMinWidth(20);
 		unitCButton.setMinHeight(10);
 		unitCButton.setFont(Font.font("Verdana", 12));
+		unitCButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				int currFunds = market.getFunds();
+				if(currFunds >= unit3Price) {
+				currFunds -= unit3Price;
+				market.setFunds(currFunds);
+				bank.setText("$" + market.getFunds() );
+				}
+			}		
+		});
 		
 		Button unitDButton = new Button();
 		unitDButton.setText("Unit D");
@@ -164,17 +201,17 @@ public class BattleScene implements SceneInterface {
 		pauseButton.setMinHeight(10);
 		pauseButton.setFont(Font.font("Verdana", 12));
 		
-		Button marketButton = new Button();
-		marketButton.setText("Market");
-		marketButton.setLayoutX(810);
-		marketButton.setLayoutY(10);
-		marketButton.setMinWidth(10);
-		marketButton.setMinHeight(10);
-		marketButton.setFont(Font.font("Verdana", 12));
+		Button upgradeButton = new Button();
+		upgradeButton.setText("Upgrades");
+		upgradeButton.setLayoutX(810);
+		upgradeButton.setLayoutY(10);
+		upgradeButton.setMinWidth(10);
+		upgradeButton.setMinHeight(10);
+		upgradeButton.setFont(Font.font("Verdana", 12));
 		
 		Button menuButton = new Button();
 		menuButton.setText("Menu");
-		menuButton.setLayoutX(870);
+		menuButton.setLayoutX(890);
 		menuButton.setLayoutY(10);
 		menuButton.setMinWidth(10);
 		menuButton.setMinHeight(10);
@@ -188,11 +225,11 @@ public class BattleScene implements SceneInterface {
 			}
 		});
 		
-		marketButton.setOnAction(new EventHandler<ActionEvent>() {
+		upgradeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				sceneManager.goToMarketScene(sceneManager);
+				sceneManager. goToUpgradeScene(sceneManager);
 			}
 		});
 		
@@ -205,7 +242,7 @@ public class BattleScene implements SceneInterface {
 		root.getChildren().add(spellButton);
 		root.getChildren().add(pauseButton);
 		root.getChildren().add(menuButton);
-		root.getChildren().add(marketButton);
+		root.getChildren().add(upgradeButton);
 	}
 
 }

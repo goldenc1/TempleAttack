@@ -10,6 +10,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.Market;
 import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +21,7 @@ public class MarketScene implements SceneInterface {
 	private Scene marketScene;
 	private Group root;
 	private int funds;
+	private Slider slider;
 	
 	
 	public MarketScene(SceneManager sceneManager) {
@@ -27,7 +29,7 @@ public class MarketScene implements SceneInterface {
 	}
 	
 	@Override
-	public Scene init(int width, int height) {
+	public Scene init(int width, int height, Market market) {
 		root = new Group();
 		marketScene = new Scene(root, width, height);
 		addSlider();
@@ -47,24 +49,39 @@ public class MarketScene implements SceneInterface {
 		amountLabel.setLayoutY(170);
 		amountLabel.setFont(new Font("Verdana", 12));
 		
+		Label easyLabel = new Label();
+		easyLabel.setText("Easier");
+		easyLabel.setLayoutX(550);
+		easyLabel.setLayoutY(200);
+		easyLabel.setFont(new Font("Verdana", 12));
+		
+		Label hardLabel = new Label();
+		hardLabel.setText("Harder");
+		hardLabel.setLayoutX(360);
+		hardLabel.setLayoutY(200);
+		hardLabel.setFont(new Font("Verdana", 12));
+		
 		//create slider
-		Slider slider = new Slider(500, 2000, 500);
+		slider = new Slider(500, 2000, 500);
 		slider.setLayoutX(400);
 		slider.setLayoutY(200);
 		slider.setShowTickMarks(true);
 		slider.setShowTickLabels(true);
 		slider.setSnapToTicks(true);
 		slider.setMajorTickUnit(500);
+		setFunds((int)slider.getValue());
+		
 		//create event listener/handler on value changing on slider and set that value to be starting funds
 		slider.valueProperty().addListener((changed, oldValue, newValue)-> {
 			amountLabel.setText("$" + (int)Math.round((double)newValue));
-			setFunds((int)Math.round((double) newValue));
 		});
 		
 		//add nodes to root 
 		root.getChildren().add(fundLabel);
 		root.getChildren().add(slider);
 		root.getChildren().add(amountLabel);
+		root.getChildren().add(easyLabel);
+		root.getChildren().add(hardLabel);
 	}
 	//adds return button
 	private void addReturnButton() {
@@ -79,14 +96,17 @@ public class MarketScene implements SceneInterface {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				sceneManager.goToBattleScene(sceneManager);
+				sceneManager.goToMenuScene(sceneManager);
 			}		
 		});
 		root.getChildren().add(returnButton);
 	}
+	public Slider getSlider() {
+		return this.slider;
+	}
 
 	public int getFunds() {
-		return funds;
+		return this.funds;
 	}
 
 	public void setFunds(int funds) {

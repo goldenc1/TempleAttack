@@ -13,9 +13,12 @@ public class SceneManager {
 	private Stage stage;
 	private Timeline animation;
 	private Market market = new Market();
+	private MarketScene MarketScene;
 	
 	public SceneManager(Stage primaryStage) {
 		this.stage = primaryStage;
+		//sets default funds 1000
+		market.setFunds(1500);
 		this.animation = new Timeline();
 		stage.show();
 	}
@@ -24,7 +27,12 @@ public class SceneManager {
 		animation.stop();
 		
 		MainMenu MainMenu = new MainMenu(sceneManager);
-		Scene menuScene = MainMenu.init(Main.SIZE_W, Main.SIZE_H);
+		//sets starting funds to value on market menu's slider
+		if(MarketScene != null) {
+			market.setFunds((int)MarketScene.getSlider().getValue());
+		}
+		Scene menuScene = MainMenu.init(Main.SIZE_W, Main.SIZE_H, market);
+		
 		stage.setScene(menuScene);
 		
 	}
@@ -33,7 +41,7 @@ public class SceneManager {
 		animation.stop();
 		
 		BattleScene BattleScene = new BattleScene(sceneManager);
-		Scene battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H);
+		Scene battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
 		//sets the scene
 		stage.setScene(battleScene);
 		
@@ -44,17 +52,23 @@ public class SceneManager {
 		animation.stop();
 		
 		AboutScene AboutScene = new AboutScene(sceneManager);
-		Scene aboutScene = AboutScene.init(Main.SIZE_W, Main.SIZE_H);
+		Scene aboutScene = AboutScene.init(Main.SIZE_W, Main.SIZE_H, market);
 		//sets the scene
 		stage.setScene(aboutScene);
 		
 	}
 	public void goToMarketScene(SceneManager sceneManager) {
+		animation.stop();
 		
-		MarketScene MarketScene = new MarketScene(sceneManager);
-		Scene marketScene = MarketScene.init(Main.SIZE_W, Main.SIZE_H);
+		MarketScene = new MarketScene(sceneManager);
+		Scene marketScene = MarketScene.init(Main.SIZE_W, Main.SIZE_H, market);
 		stage.setScene(marketScene);
-		//sets the stating funds for the game
-		market.setFunds(MarketScene.getFunds());
+	}
+	public void goToUpgradeScene(SceneManager sceneManager) {
+		animation.stop();
+		
+		UpgradeScene UpgradeScene = new UpgradeScene(sceneManager);
+		Scene upgradeScene = UpgradeScene.init(Main.SIZE_W, Main.SIZE_H, market);
+		stage.setScene(upgradeScene);
 	}
 }
