@@ -1,5 +1,5 @@
 package view;
-
+//Developer: Carlos Portillo
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -67,6 +67,9 @@ public class UpgradeScene implements SceneInterface  {
 				currFunds -= unit1UpgradePrice;
 				market.setFunds(currFunds);
 				fundLabel.setText("Current Funds  $:" + market.getFunds() );
+				//sets the upgrade variable to true so when you create a new instance of this unit from
+				//the battle scene it creates with upgraded parameters
+				Main.fighterUpgrade = true;
 				}
 				else {
 				fundLabel2.setText("Insufficient funds!!");
@@ -87,6 +90,7 @@ public class UpgradeScene implements SceneInterface  {
 				currFunds -= unit2UpgradePrice;
 				market.setFunds(currFunds);
 				fundLabel.setText("Current Funds  $:" + market.getFunds() );
+				Main.archerUpgrade = true;
 				}
 				else {
 				fundLabel2.setText("Insufficient funds!!");
@@ -106,6 +110,7 @@ public class UpgradeScene implements SceneInterface  {
 				currFunds -= unit3UpgradePrice;
 				market.setFunds(currFunds);
 				fundLabel.setText("Current Funds  $:" + market.getFunds() );
+				Main.horseUpgrade = true;
 				}
 				else {
 				fundLabel2.setText("Insufficient funds!!");

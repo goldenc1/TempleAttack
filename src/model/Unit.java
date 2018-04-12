@@ -50,6 +50,9 @@ private String name="";           //name of the unit
         this.setOwner(player);
         }
 }}
+    public Unit() {
+    	
+    }
     
     
     public void setName(String Name){
