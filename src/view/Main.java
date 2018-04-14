@@ -25,9 +25,9 @@ import java.util.ArrayList;
 /**
  * @program Temple Attack
  * 
- * @author Charles Golden II 
+ * @author Charles Golden II , Carlos Portillo, Rachel Direling, Fred Slawson, Zach 
  *
- * @version 1.0
+ * @version 1.0,
  * 
  * @returns nothing
 **/

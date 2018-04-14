@@ -28,7 +28,10 @@ private double range;         //pixels of range that unit attacks at
 private String AImode=null;   //defines unit behavior
 private int owner=0;             //whos unit is it?
 private String name="";           //name of the unit
-// a unit is instantiated
+// a unit is instantiated. 
+//      Specifying the "player" parameter with 1 means it's the player's unit, any other number means 
+//		it's the AI
+
     public Unit(ArrayList<String> units, String UnitType, int player){
         for (String x: units){
         if(x.contains(UnitType)){

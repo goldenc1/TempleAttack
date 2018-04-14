@@ -4,14 +4,18 @@ import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import model.Unit;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.image.*;
@@ -50,6 +54,18 @@ public class BattleScene implements SceneInterface {
 		return battleScene;
 	}
 	
+	private void startBattle(){
+		//TODO
+	}
+	
+	public void animate(Node unit, int x){
+		TranslateTransition trans = new TranslateTransition();
+		trans.setDuration(Duration.seconds(1));
+		trans.setNode(unit);
+		trans.setToX(x);
+		trans.play();
+		
+	}
 	
 	
 	private void addBackground() {
@@ -61,10 +77,6 @@ public class BattleScene implements SceneInterface {
 		iv.setImage(background);
 	
 		battleScene.setFill(background1);
-		
-		
-
-        
 	    
 	}
 	
