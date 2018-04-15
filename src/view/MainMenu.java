@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -15,13 +16,16 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Font;
+import model.Market;
 
 public class MainMenu implements SceneInterface {
 	
 private SceneManager sceneManager;
 private Scene menuScene;
 private Group root;
+
 
 public MainMenu(SceneManager sceneManager) {
 	
@@ -30,13 +34,13 @@ public MainMenu(SceneManager sceneManager) {
 }
 
 	@Override
-	public Scene init(int width, int height) {		
+	public Scene init(int width, int height, Market market) {		
 
 		root = new Group();	
 		menuScene = new Scene(root, width, height);
+
 		
-		
-		
+		addBackground();
 		addStartButton();
 		addAboutButton();
 		addDifficultyButton();
@@ -58,6 +62,7 @@ public MainMenu(SceneManager sceneManager) {
 			public void handle(ActionEvent event) {
 				
 				sceneManager.goToBattleScene(sceneManager);
+				 
 			}
 		});
 		
@@ -93,9 +98,26 @@ public MainMenu(SceneManager sceneManager) {
 		marketButton.setFont(Font.font("Verdana", 12));
 		
 		marketButton.setOnAction((ActionEvent e)->{
-			sceneManager.goToMarketScene(sceneManager);
+				sceneManager.goToMarketScene(sceneManager);
+			
 		});
 		
 		root.getChildren().add(marketButton);
 	}
+	
+	private void addBackground() {
+		//load the image
+			Image background = new Image("img/background.jpg");
+			ImagePattern background1 = new ImagePattern(background);
+			System.out.println("Is Loaded: " +background.isError());
+			ImageView iv = new ImageView();
+			iv.setImage(background);
+		
+			menuScene.setFill(background1);
+			
+			
+
+	        
+		    
+		}
 }

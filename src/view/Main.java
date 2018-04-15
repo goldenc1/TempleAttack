@@ -22,6 +22,8 @@ import javafx.scene.media.MediaPlayer;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+
+
 /**
  * @program Temple Attack
  * 
@@ -33,6 +35,9 @@ import java.util.ArrayList;
 **/
 
 public class Main extends Application{
+	public static boolean horseUpgrade = false; 
+	public static boolean fighterUpgrade = false;
+	public static boolean  archerUpgrade = false;
 	public static final int SIZE_W = 1250;
 	public static final int SIZE_H = 400;
 	/**
