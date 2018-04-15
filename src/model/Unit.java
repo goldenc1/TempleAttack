@@ -72,6 +72,14 @@ private String name="";           //name of the unit
     
     }
     
+    
+    public abstract void upgrade() throws IneligibleUpgradeException;
+    public abstract int getUpgradePrice() throws IneligibleUpgradeException;
+    public abstract void checkFunds();
+    
+    
+    
+    
     public void setName(String Name){
         this.name=Name;
  }   

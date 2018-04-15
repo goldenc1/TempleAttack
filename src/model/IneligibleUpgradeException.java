@@ -1,9 +1,9 @@
 package model;
 
-public class IneligibleUpgradeException {
+public class IneligibleUpgradeException extends Exception{
 
-	public IneligibleUpgradeException() {
-		// TODO Auto-generated constructor stub
+	public IneligibleUpgradeException(String msg) {
+		super("msg");
 	}
 
 }
