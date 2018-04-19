@@ -27,17 +27,17 @@ import java.util.ArrayList;
 /**
  * @program Temple Attack
  * 
- * @author Charles Golden II 
+ * @author Charles Golden II , Carlos Portillo, Rachel Direling, Fred Slawson, Zach 
  *
- * @version 1.0
+ * @version 1.0,
  * 
  * @returns nothing
 **/
 
 public class Main extends Application{
-	public static boolean horseUpgrade = false; 
-	public static boolean fighterUpgrade = false;
-	public static boolean  archerUpgrade = false;
+	public static int horsemanLevel =0; 
+	public static int fighterLevel= 0;
+	public static int  archerLevel = 0;
 	public static final int SIZE_W = 1250;
 	public static final int SIZE_H = 400;
 	/**

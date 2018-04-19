@@ -1,4 +1,5 @@
 package model;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,47 +16,48 @@ import java.util.Scanner;
  */
 /**
  *
- * @author fred.slawson.adm
+ * @author fred.slawson.adm, Charles Golden II 
  */
 public class UnitManager {
-    File units;
-    ArrayList unitList;
-    ArrayList playerUnits;
-    ArrayList enemyUnits;
-    public void UnitManager(File Units) throws FileNotFoundException{
-        units=Units;
-        Scanner scanner = new Scanner(units);
-        String fileString="";
-        while (scanner.hasNextLine()) {
-                fileString.concat(scanner.nextLine());
-              }
-        while(fileString.contains("<end>")){
-            unitList.add(fileString.substring(0,fileString.indexOf("<end>")+4));
-            fileString= fileString.substring(fileString.indexOf("<end>")+4);   
-}   
-   
-    }
-public void addUnit(String name, int owner){
-if(owner==1){Unit unit = new Unit(unitList,name,owner);
-playerUnits.add(unit);
-}
-if(owner==2){Unit unit = new Unit(unitList,name,owner);
-enemyUnits.add(unit);
-}
+	ArrayList<Unit> units;  //player
+	ArrayList<Unit> defUnits;  //AI
+
+	public void UnitManager(ArrayList<Unit> Units, ArrayList<Unit> def){
+		units = Units;
+		defUnits = def;
+		//Scanner scanner = new Scanner(units);      // not sure why you would scan an arraylist? 
+		/*String fileString = "";
+		while (scanner.hasNextLine()) {
+			fileString.concat(scanner.nextLine());
+		}
+		while (fileString.contains("<end>")) {
+			units.add(fileString.substring(0, fileString.indexOf("<end>") + 4));
+			fileString = fileString.substring(fileString.indexOf("<end>") + 4);
+		}*/
+		
+
+	}
+
+//	public void addUnit(String name, int owner) {
+//		if (owner == 1) {
+//			Unit unit = new Unit(units, name, owner);
+//			playerUnits.add(unit);
+//		}
+//		else if (owner == 2) {
+//			Unit unit = new Unit(units, name, owner);
+//			enemyUnits.add(unit);
+//		}
+//		else {
+//			throw new Exception("No units added, could not determine unit's allegience");
+//		}
+//
+//	}
 
 }
-   
-}   
- 
 
-/*  Unit Stat Block Template 
-
-<name>"spearman"
-<strength>1
-<health>1
-<range>2
-<price>1
-<speed>10
-<AImode>"AdvanceToContact();"
-<end>
-*/
+/*
+ * Unit Stat Block Template
+ * 
+ * <name>"spearman" <strength>1 <health>1 <range>2 <price>1 <speed>10
+ * <AImode>"AdvanceToContact();" <end>
+ */

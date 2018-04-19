@@ -15,20 +15,23 @@ import java.util.ArrayList;
  *
  * @author fred.slawson.adm
  */
-public class Unit {
+public abstract class Unit {
 
     //UML Attribs
-private double strength=0;  //attack power
-private double health=0;     //hit points
-private int price=0;          //gold cost
-private double speed=0;       //pixels per tick of movement
-private boolean boost=false;  //is unit boosted?
-private double range;         //pixels of range that unit attacks at   
+protected double strength=0;  //attack power
+protected double health=0;     //hit points
+protected int price=0;          //gold cost
+protected double speed=0;       //pixels per tick of movement
+protected boolean boost=false;  //is unit boosted?
+protected double range;         //pixels of range that unit attacks at   
     //other stuff needed
-private String AImode=null;   //defines unit behavior
-private int owner=0;             //whos unit is it?
+protected String AImode=null;   //defines unit behavior
+protected boolean player = true;             //true = player unit;  false == computer 
 private String name="";           //name of the unit
-// a unit is instantiated
+// a unit is instantiated. 
+//      Specifying the "player" parameter with 1 means it's the player's unit, any other number means 
+//		it's the AI
+
     public Unit(ArrayList<String> units, String UnitType, int player){
         for (String x: units){
         if(x.contains(UnitType)){
@@ -47,12 +50,37 @@ private String name="";           //name of the unit
         temp=temp.substring(temp.indexOf("/n")+1);
         this.setAI(temp.substring(temp.indexOf("<AImode>")+7,temp.indexOf("/n")));
         temp=temp.substring(temp.indexOf("/n")+1);
-        this.setOwner(player);
         }
 }}
+    
+    //constructor 2
+    public Unit(boolean player, int strength, double health, int price, int speed, int range) {
+    	this.player = player;
+		this.strength = strength;
+		this.health = health; // hit points
+		this.price = price; // gold cost
+		this.speed = speed; // pixels per tick of movement
+		this.boost = false; // is unit boosted?
+		this.range = range; // radius of 20 (what units of measurements? pixels?
+							// then raise the number)
+    	
+    }
+    
+    // this constructor is when the variables are set in the child class
+    public Unit(boolean player){      	
+    	this.player = player; 
+    
+    }
     public Unit() {
     	
     }
+    
+    
+    public abstract void upgrade() throws IneligibleUpgradeException;
+    public abstract int getUpgradePrice() throws IneligibleUpgradeException;
+    public abstract void checkFunds();
+    
+    
     
     
     public void setName(String Name){
@@ -103,15 +131,10 @@ private String name="";           //name of the unit
     public String getAI(){
         return this.AImode;
 }    
-    public void setOwner(int own){
-        this.owner=own;
- }   
-    public int getOwner(){
-        return this.owner;
-}   
-    
-    
-        } 
+    public boolean getPlayer(){
+    	return this.player;     // false == computer   
+     } 
+}
         
         
     

@@ -63,16 +63,18 @@ public class UpgradeScene implements SceneInterface  {
 			@Override
 			public void handle(ActionEvent event) {
 				int currFunds = market.getFunds();
-				if(currFunds >= unit1UpgradePrice) {
-				currFunds -= unit1UpgradePrice;
-				market.setFunds(currFunds);
-				fundLabel.setText("Current Funds  $:" + market.getFunds() );
-				//sets the upgrade variable to true so when you create a new instance of this unit from
-				//the battle scene it creates with upgraded parameters
-				Main.fighterUpgrade = true;
+				if(currFunds >= unit1UpgradePrice && Main.fighterLevel < 2) {
+					currFunds -= unit1UpgradePrice;
+					market.setFunds(currFunds);
+					fundLabel.setText("Current Funds  $:" + market.getFunds() );
+					//level fighter up
+					Main.fighterLevel++;
+				}
+				else if(currFunds <= unit1UpgradePrice) {
+					fundLabel2.setText("Insufficient funds!!");
 				}
 				else {
-				fundLabel2.setText("Insufficient funds!!");
+					fundLabel2.setText("This unit has already maxed it's level");
 				}
 			}		
 		});
@@ -86,14 +88,17 @@ public class UpgradeScene implements SceneInterface  {
 			@Override
 			public void handle(ActionEvent event) {
 				int currFunds = market.getFunds();
-				if(currFunds >= unit2UpgradePrice) {
-				currFunds -= unit2UpgradePrice;
-				market.setFunds(currFunds);
-				fundLabel.setText("Current Funds  $:" + market.getFunds() );
-				Main.archerUpgrade = true;
+				if(currFunds >= unit2UpgradePrice && Main.archerLevel <= 2) {
+					currFunds -= unit2UpgradePrice;
+					market.setFunds(currFunds);
+					fundLabel.setText("Current Funds  $:" + market.getFunds() );
+					Main.archerLevel++;
+				}
+				else if(currFunds <= unit2UpgradePrice) {
+					fundLabel2.setText("Insufficient funds!!");
 				}
 				else {
-				fundLabel2.setText("Insufficient funds!!");
+					fundLabel2.setText("This unit has already maxed it's level");
 				}
 			}		
 		});
@@ -106,14 +111,17 @@ public class UpgradeScene implements SceneInterface  {
 			@Override
 			public void handle(ActionEvent event) {
 				int currFunds = market.getFunds();
-				if(currFunds >= unit3UpgradePrice) {
-				currFunds -= unit3UpgradePrice;
-				market.setFunds(currFunds);
-				fundLabel.setText("Current Funds  $:" + market.getFunds() );
-				Main.horseUpgrade = true;
+				if(currFunds >= unit3UpgradePrice && Main.horsemanLevel < 2) {
+					currFunds -= unit3UpgradePrice;
+					market.setFunds(currFunds);
+					fundLabel.setText("Current Funds  $:" + market.getFunds() );
+					Main.horsemanLevel++;
+				}
+				else if (currFunds <= unit3UpgradePrice){
+					fundLabel2.setText("Insufficient funds!!");
 				}
 				else {
-				fundLabel2.setText("Insufficient funds!!");
+					fundLabel2.setText("This unit has already maxed it's level");
 				}
 			}		
 		});
