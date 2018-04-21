@@ -39,6 +39,7 @@ public class BattleScene implements SceneInterface {
 	private final int unit3Price = 300;
 	private final int startingX = 10;
 	private final int startingY = 320;
+	private double unitSpeed;
 	
 	Image baron, archerIMG;
 	ImageView imageView, baronIV, archerIV;
@@ -76,9 +77,9 @@ public class BattleScene implements SceneInterface {
 		//TODO
 	}
 	
-	public void animate(Node unit, int x){
+	public void animate(Node unit, int x, double speed){
 		TranslateTransition trans = new TranslateTransition();
-		trans.setDuration(Duration.seconds(1));
+		trans.setDuration(Duration.seconds(speed));
 		trans.setNode(unit);
 		trans.setToX(x);
 		trans.play();
@@ -289,9 +290,9 @@ public class BattleScene implements SceneInterface {
 		this.y = startingY;
 		
 		this.imageView.relocate(x, y);
-		
+		unitSpeed = (75/fighter.getSpeed());
 		this.root.getChildren().add(this.imageView);
-		animate(this.imageView, Main.SIZE_W);
+		animate(this.imageView, Main.SIZE_W, unitSpeed);
 	}
 	
 	public void addArcher() {
@@ -304,9 +305,9 @@ public class BattleScene implements SceneInterface {
 		this.y = startingY;
 		
 		this.imageView.relocate(x, y);
-		
+		unitSpeed = (75/archer.getSpeed());
 		this.root.getChildren().add(this.imageView);
-		animate(this.imageView, Main.SIZE_W);
+		animate(this.imageView, Main.SIZE_W,unitSpeed);
 	}
 
 }
