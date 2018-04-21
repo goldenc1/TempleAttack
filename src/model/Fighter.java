@@ -11,19 +11,19 @@ public class Fighter extends Unit {
 			setStrength(5);
 			setHealth(20);
 			setRange(4);
-			setSpeed(1);
+			setSpeed(2);
 		}
 		else if(level == 1){
 			setStrength(10);
 			setHealth(30);
 			setRange(8);
-			setSpeed(2);
+			setSpeed(4);
 		}
 		else {
 			setStrength(16);
 			setHealth(35);
 			setRange(12);
-			setSpeed(3);
+			setSpeed(6);
 		}
 	}
 

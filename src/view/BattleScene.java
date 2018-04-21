@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Unit;
+import model.Archer;
 import model.Fighter;
 import model.Market;
 import javafx.scene.control.TextField;
@@ -39,9 +40,12 @@ public class BattleScene implements SceneInterface {
 	private final int startingX = 10;
 	private final int startingY = 320;
 	
-	Image baron, archer;
+	Image baron, archerIMG;
 	ImageView imageView, baronIV, archerIV;
 	int x, y;
+	Fighter fighter;
+	Archer archer;
+	
 	
 	
 	
@@ -78,6 +82,7 @@ public class BattleScene implements SceneInterface {
 		trans.setNode(unit);
 		trans.setToX(x);
 		trans.play();
+		
 		
 	}
 	
@@ -153,8 +158,8 @@ public class BattleScene implements SceneInterface {
 		//unitBButton.setText("Unit B");
 		
 		
-		archer = new Image ("img/archer.png");
-		archerIV = new ImageView(archer);
+		archerIMG = new Image ("img/archer.png");
+		archerIV = new ImageView(archerIMG);
 		archerIV.setFitHeight(70);
 		archerIV.setFitWidth(48);
 		unitBButton.setGraphic(archerIV);
@@ -275,7 +280,7 @@ public class BattleScene implements SceneInterface {
 	}
 	
 	public void addBaron() {
-		Fighter fighter = new Fighter(Main.getFighterLevel(),baron, x,y);
+		fighter = new Fighter(Main.getFighterLevel(),baron, x,y);
 		this.imageView = new ImageView(baron);
 		this.imageView.setFitWidth(50);
 		this.imageView.setFitHeight(50);
@@ -286,11 +291,12 @@ public class BattleScene implements SceneInterface {
 		this.imageView.relocate(x, y);
 		
 		this.root.getChildren().add(this.imageView);
+		animate(this.imageView, Main.SIZE_W);
 	}
 	
 	public void addArcher() {
-		Fighter fighter = new Fighter(Main.getFighterLevel(),archer, x,y);
-		this.imageView = new ImageView(archer);
+		archer = new Archer(Main.getFighterLevel(),archerIMG, x,y);
+		this.imageView = new ImageView(archerIMG);
 		this.imageView.setFitWidth(50);
 		this.imageView.setFitHeight(50);
 		
@@ -300,6 +306,7 @@ public class BattleScene implements SceneInterface {
 		this.imageView.relocate(x, y);
 		
 		this.root.getChildren().add(this.imageView);
+		animate(this.imageView, Main.SIZE_W);
 	}
 
 }

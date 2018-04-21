@@ -44,7 +44,6 @@ public class SceneManager {
 		animation.stop();
 		if(BattleScene == null) {
 		BattleScene = new BattleScene(sceneManager);
-	
 		battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
 		//sets the scene
 		}
