@@ -1,9 +1,11 @@
 package model;
 
+import javafx.scene.image.Image;
+
 //Developer: Carlos Portillo
 public class Archer extends Unit {
 
-	public Archer(int level) {
+	public Archer(int level, Image image, int x, int y) {
 		if(level == 0)
 		{
 			setStrength(2);
@@ -41,6 +43,5 @@ public class Archer extends Unit {
 	@Override
 	public void checkFunds() {
 		// TODO Auto-generated method stub
-		
 	}
 }

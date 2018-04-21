@@ -1,5 +1,6 @@
 package model;
 
+
 public class IneligibleUpgradeException extends Exception {
 
 	  public IneligibleUpgradeException(String message){
@@ -7,3 +8,4 @@ public class IneligibleUpgradeException extends Exception {
 	  }
 
 	}
+

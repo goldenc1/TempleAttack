@@ -63,6 +63,7 @@ private String name="";           //name of the unit
 		this.boost = false; // is unit boosted?
 		this.range = range; // radius of 20 (what units of measurements? pixels?
 							// then raise the number)
+
     	
     }
     
@@ -72,13 +73,19 @@ private String name="";           //name of the unit
     
     }
     public Unit() {
+
     	
     }
+ 
     
     
     public abstract void upgrade() throws IneligibleUpgradeException;
     public abstract int getUpgradePrice() throws IneligibleUpgradeException;
     public abstract void checkFunds();
+    
+    
+    
+ 
     
     
     

@@ -1,8 +1,11 @@
 package model;
+
+import javafx.scene.image.Image;
+
 //Developer: Carlos Portillo
 public class Fighter extends Unit {
 
-	public Fighter(int level) {
+	public Fighter(int level, Image image, double x, double y) {
 		if(level == 0)
 		{
 			setStrength(5);

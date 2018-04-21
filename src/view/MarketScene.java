@@ -8,10 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Market;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -34,6 +37,7 @@ public class MarketScene implements SceneInterface {
 		marketScene = new Scene(root, width, height);
 		addSlider();
 		addReturnButton();
+		addBackground();
 		return marketScene;
 	}
 	//adds slider and labels associated with them
@@ -112,5 +116,21 @@ public class MarketScene implements SceneInterface {
 	public void setFunds(int funds) {
 		this.funds = funds;
 	}
+	
+	private void addBackground() {
+		//load the image
+			Image background = new Image("img/mainscreen.jpg");
+			ImagePattern background1 = new ImagePattern(background);
+			System.out.println("Is Loaded: " +background.isError());
+			ImageView iv = new ImageView();
+			iv.setImage(background);
+		
+			marketScene.setFill(background1);
+			
+			
+
+	        
+		    
+		}
 
 }

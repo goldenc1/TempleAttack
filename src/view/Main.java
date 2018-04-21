@@ -60,7 +60,7 @@ public class Main extends Application{
 	SceneManager sceneManager = new SceneManager(primaryStage);
 	
 	sceneManager.goToMenuScene(sceneManager);
-	addMusic();
+	//addMusic();
 	
 	}
 	
@@ -77,12 +77,11 @@ private void addMusic() {
 			       }
 			   });
 			  mediaPlayer.play();
-			
-		
-		
-		
-		
 	}
+
+public static int getFighterLevel() {
+	return fighterLevel;
+}
 	
 	
 

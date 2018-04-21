@@ -49,13 +49,17 @@ public MainMenu(SceneManager sceneManager) {
 	}
 	
 	private void addStartButton() {
+		
+		Image start = new Image ("img/start.png");
+		ImageView startIV = new ImageView(start);
+		startIV.setFitHeight(35);
+		startIV.setFitWidth(140);
 		Button startButton = new Button();
-		startButton.setText("Click to Begin Battle");
-		startButton.setLayoutX(450);
+		startButton.setGraphic(startIV);
+		startButton.setLayoutX((Main.SIZE_W/2)-70);
 		startButton.setLayoutY(150);
-		startButton.setMinWidth(150);
-		startButton.setMinHeight(30);
-		startButton.setFont(Font.font("Verdana", 12));
+		startButton.setStyle("-fx-background-color: rgba(0, 100, 100, 0); -fx-background-radius: 10;");
+
 		
 		startButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -71,12 +75,16 @@ public MainMenu(SceneManager sceneManager) {
 	}
 	private void addAboutButton() {
 		Button aboutButton = new Button();
-		aboutButton.setText("About T.A.G Team");
-		aboutButton.setLayoutX(450);
+		
+		Image about = new Image ("img/about.png");
+		ImageView aboutIV = new ImageView(about);
+		aboutIV.setFitHeight(35);
+		aboutIV.setFitWidth(140);
+		aboutButton.setGraphic(aboutIV);
+		aboutButton.setLayoutX((Main.SIZE_W/2)-70);
 		aboutButton.setLayoutY(200);
-		aboutButton.setMinWidth(150);
-		aboutButton.setMinHeight(30);
-		aboutButton.setFont(Font.font("Verdana", 12));
+		aboutButton.setStyle("-fx-background-color: rgba(0, 100, 100, 0); -fx-background-radius: 10;");
+
 		aboutButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -89,25 +97,28 @@ public MainMenu(SceneManager sceneManager) {
 	}
 	
 	private void addDifficultyButton() {
-		Button marketButton = new Button();
-		marketButton.setText("Choose Difficulty");
-		marketButton.setLayoutX(450);
-		marketButton.setLayoutY(250);
-		marketButton.setMinWidth(150);
-		marketButton.setMinHeight(30);
-		marketButton.setFont(Font.font("Verdana", 12));
+		Button difficultyButton = new Button();
 		
-		marketButton.setOnAction((ActionEvent e)->{
+		Image difficulty = new Image ("img/difficulty.png");
+		ImageView difficultyIV = new ImageView(difficulty);
+		difficultyIV.setFitHeight(35);
+		difficultyIV.setFitWidth(140);
+		difficultyButton.setLayoutX((Main.SIZE_W/2)-70);
+		difficultyButton.setLayoutY(250);
+		difficultyButton.setGraphic(difficultyIV);
+		difficultyButton.setStyle("-fx-background-color: rgba(0, 100, 100, 0); -fx-background-radius: 10;");
+		
+		difficultyButton.setOnAction((ActionEvent e)->{
 				sceneManager.goToMarketScene(sceneManager);
 			
 		});
 		
-		root.getChildren().add(marketButton);
+		root.getChildren().add(difficultyButton);
 	}
 	
 	private void addBackground() {
 		//load the image
-			Image background = new Image("img/background.jpg");
+			Image background = new Image("img/mainscreen.jpg");
 			ImagePattern background1 = new ImagePattern(background);
 			System.out.println("Is Loaded: " +background.isError());
 			ImageView iv = new ImageView();

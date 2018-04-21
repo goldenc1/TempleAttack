@@ -19,9 +19,11 @@ import java.util.ArrayList;
 /**
  * @program Temple Attack
  * 
- * @author Charles Golden II 
+ * @author Charles Golden II, CJ Portillo, Fred Slawson, Rachel Direling, Zach 
  *
  * @version 1.0
+ * 
+ * Main Excecuition controller for Temple Attack
  * 
  * @returns nothing
 **/

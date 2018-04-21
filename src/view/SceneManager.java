@@ -14,6 +14,8 @@ public class SceneManager {
 	private Timeline animation;
 	private Market market = new Market();
 	private MarketScene MarketScene;
+	private BattleScene BattleScene;
+	private Scene battleScene;
 	
 	public SceneManager(Stage primaryStage) {
 		this.stage = primaryStage;
@@ -37,12 +39,15 @@ public class SceneManager {
 		
 	}
 	
-	public void goToBattleScene(SceneManager sceneManager) {
+	public void goToBattleScene(SceneManager sceneManager) {//!! won't this create a new battle sceene everytime? we should create one instance of this in the constructor
+
 		animation.stop();
-		
-		BattleScene BattleScene = new BattleScene(sceneManager);
-		Scene battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
+		if(BattleScene == null) {
+		BattleScene = new BattleScene(sceneManager);
+	
+		battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
 		//sets the scene
+		}
 		stage.setScene(battleScene);
 		
 	}
