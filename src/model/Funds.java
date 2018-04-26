@@ -5,19 +5,20 @@ package model;
  * 
  * 
  * */
+import java.util.ArrayList;
 
 public class Funds {
 	
-	private static Funds funds_instance = new Funds(); // for singleton pattern
-	protected static int coins;
-	protected final static int INITIAL_FUNDS = 100; //100 coins to start
-	private Funds(){
-		coins = INITIAL_FUNDS;
+	private static int funds;
+	
+	public static void Funds(){
+		
+		
 	}
 	
-	protected static boolean Transaction(int cost) throws InsufficientFundsException{
+	public static boolean Transaction(int cost) throws InsufficientFundsException{
 		if (Validate(cost)){
-			coins = coins-cost;
+			funds = funds-cost;
 			return true;
 		}
 		else{
@@ -31,21 +32,10 @@ public class Funds {
 		return false;
 	}
 	
-	public int addFunds(int amount){  //
-		return this.coins += amount;
+	public int addFunds(int amount){
+		return this.funds += amount;
 	}
 	
-	
-	 // static method to create instance of Singleton class
-    public static Funds Singleton()
-    {
-        // To ensure only one instance is created
-        if (funds_instance == null)
-        {
-        	funds_instance = new Funds();
-        }
-        return funds_instance;
-    }
 	
 	
 	
