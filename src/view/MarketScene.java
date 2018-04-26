@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.Market;
 import javafx.scene.control.TextField;
@@ -40,30 +41,31 @@ public class MarketScene implements SceneInterface {
 	public void addSlider() {
 		Label fundLabel = new Label();
 		fundLabel.setText("Set starting funds");
-		fundLabel.setLayoutX(400);
+		fundLabel.setLayoutX((Main.SIZE_W/2)-75);
 		fundLabel.setLayoutY(170);
-		fundLabel.setFont(new Font("Verdana", 12));
+		fundLabel.setFont(Font.font("Verdana",FontWeight.BOLD,18));
 		
 		Label amountLabel = new Label("$" + 500);
-		amountLabel.setLayoutX(580);
+		amountLabel.setLayoutX((Main.SIZE_W/2)+140);
 		amountLabel.setLayoutY(170);
-		amountLabel.setFont(new Font("Verdana", 12));
+		amountLabel.setFont(Font.font("Verdana",FontWeight.BOLD,18));
 		
 		Label easyLabel = new Label();
 		easyLabel.setText("Easier");
-		easyLabel.setLayoutX(550);
+		easyLabel.setLayoutX((Main.SIZE_W/2)+100);
 		easyLabel.setLayoutY(200);
-		easyLabel.setFont(new Font("Verdana", 12));
+		easyLabel.setFont(Font.font("Verdana",FontWeight.BOLD,18));
+	
 		
 		Label hardLabel = new Label();
 		hardLabel.setText("Harder");
-		hardLabel.setLayoutX(360);
+		hardLabel.setLayoutX((Main.SIZE_W/2)-150);
 		hardLabel.setLayoutY(200);
-		hardLabel.setFont(new Font("Verdana", 12));
+		hardLabel.setFont(Font.font("Verdana",FontWeight.BOLD,18));
 		
 		//create slider
 		slider = new Slider(500, 2000, 500);
-		slider.setLayoutX(400);
+		slider.setLayoutX((Main.SIZE_W/2)-50);
 		slider.setLayoutY(200);
 		slider.setShowTickMarks(true);
 		slider.setShowTickLabels(true);
@@ -87,11 +89,11 @@ public class MarketScene implements SceneInterface {
 	private void addReturnButton() {
 		Button returnButton = new Button();
 		returnButton.setText("Return to Battle");
-		returnButton.setLayoutX(400);
+		returnButton.setLayoutX((Main.SIZE_W/2)-75);
 		returnButton.setLayoutY(250);
 		returnButton.setMinWidth(150);
 		returnButton.setMinHeight(30);
-		returnButton.setFont(Font.font("Verdana", 12));
+		returnButton.setFont(Font.font("Verdana",FontWeight.BOLD,18));
 		returnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

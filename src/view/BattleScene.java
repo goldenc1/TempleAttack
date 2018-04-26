@@ -16,6 +16,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Unit;
+<<<<<<< HEAD
+=======
+import model.Archer;
+import model.Fighter;
+>>>>>>> 50cd33b054263001ce0c3177313f00926d1e45e7
 import model.Market;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.ImagePattern;
@@ -34,6 +39,20 @@ public class BattleScene implements SceneInterface {
 	private final int unit1Price = 100;
 	private final int unit2Price = 200;
 	private final int unit3Price = 300;
+<<<<<<< HEAD
+=======
+	private final int startingX = 10;
+	private final int startingY = 320;
+	private double unitSpeed;
+	
+	Image baron, archerIMG;
+	ImageView imageView, baronIV, archerIV;
+	int x, y;
+	Fighter fighter;
+	Archer archer;
+	
+	
+>>>>>>> 50cd33b054263001ce0c3177313f00926d1e45e7
 	
 	
 	public BattleScene(SceneManager sceneManager) {
@@ -63,12 +82,13 @@ public class BattleScene implements SceneInterface {
 		//TODO
 	}
 	
-	public void animate(Node unit, int x){
+	public void animate(Node unit, int x, double speed){
 		TranslateTransition trans = new TranslateTransition();
-		trans.setDuration(Duration.seconds(1));
+		trans.setDuration(Duration.seconds(speed));
 		trans.setNode(unit);
 		trans.setToX(x);
 		trans.play();
+		
 		
 	}
 	
@@ -139,11 +159,18 @@ public class BattleScene implements SceneInterface {
 		//unitBButton.setText("Unit B");
 		
 		
+<<<<<<< HEAD
 		Image archer = new Image ("img/archer.png");
 		ImageView archerIV = new ImageView(archer);
 		baronIV.setFitHeight(30);
 		baronIV.setFitWidth(20);
 		baronIV.setOpacity(.5);
+=======
+		archerIMG = new Image ("img/archer.png");
+		archerIV = new ImageView(archerIMG);
+		archerIV.setFitHeight(70);
+		archerIV.setFitWidth(48);
+>>>>>>> 50cd33b054263001ce0c3177313f00926d1e45e7
 		unitBButton.setGraphic(archerIV);
 		unitBButton.setLayoutX(170);
 		unitBButton.setLayoutY(10);
@@ -256,5 +283,38 @@ public class BattleScene implements SceneInterface {
 		root.getChildren().add(menuButton);
 		root.getChildren().add(upgradeButton);
 	}
+<<<<<<< HEAD
+=======
+	
+	public void addBaron() {
+		fighter = new Fighter(Main.getFighterLevel(),baron, x,y);
+		this.imageView = new ImageView(baron);
+		this.imageView.setFitWidth(50);
+		this.imageView.setFitHeight(50);
+		
+		this.x = startingX;
+		this.y = startingY;
+		
+		this.imageView.relocate(x, y);
+		unitSpeed = (75/fighter.getSpeed());
+		this.root.getChildren().add(this.imageView);
+		animate(this.imageView, Main.SIZE_W, unitSpeed);
+	}
+	
+	public void addArcher() {
+		archer = new Archer(Main.getFighterLevel(),archerIMG, x,y);
+		this.imageView = new ImageView(archerIMG);
+		this.imageView.setFitWidth(50);
+		this.imageView.setFitHeight(50);
+		
+		this.x = startingX;
+		this.y = startingY;
+		
+		this.imageView.relocate(x, y);
+		unitSpeed = (75/archer.getSpeed());
+		this.root.getChildren().add(this.imageView);
+		animate(this.imageView, Main.SIZE_W,unitSpeed);
+	}
+>>>>>>> 50cd33b054263001ce0c3177313f00926d1e45e7
 
 }

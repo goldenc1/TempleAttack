@@ -40,8 +40,14 @@ public class SceneManager {
 	public void goToBattleScene(SceneManager sceneManager) {//!! won't this create a new battle sceene everytime? we should create one instance of this in the constructor
 
 		animation.stop();
+<<<<<<< HEAD
 		BattleScene BattleScene = new BattleScene(sceneManager);
 		Scene battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
+=======
+		if(BattleScene == null) {
+		BattleScene = new BattleScene(sceneManager);
+		battleScene = BattleScene.init(Main.SIZE_W, Main.SIZE_H, market);
+>>>>>>> 50cd33b054263001ce0c3177313f00926d1e45e7
 		//sets the scene
 		stage.setScene(battleScene);
 		
