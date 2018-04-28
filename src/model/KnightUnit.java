@@ -2,13 +2,13 @@ package model;
 
 import model.Funds;
 
-public class Knight extends Unit {
+public class KnightUnit extends Unit {
 	
 	public static final int INITIAL_PRICE= 100;
 	public static final double UPGRADE_MULTIPLIER = 1.2;
 	public static int level;
 
-	public Knight(boolean player) {
+	public KnightUnit(boolean player) {
 		// UML Attribs
 		super(player);
 		this.strength = 55;
