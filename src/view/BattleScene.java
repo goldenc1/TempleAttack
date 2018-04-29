@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Unit;
-import object.Archer;
+import objects.Archer;
 import model.Fighter;
 import model.Market;
 import javafx.scene.control.TextField;
