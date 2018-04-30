@@ -14,7 +14,7 @@ import java.util.Timer;
 
 /**
  * 
- * AI class that controls the spawning rate and timing of waves
+ * AI class that controls the spawning / level rewards / propagation of waves
  * 
  */
 public class Wave {
@@ -24,6 +24,7 @@ public class Wave {
 	private int numFighters;
 	private int numBarriers;
 	private int numHorsemen;
+	private int prize = 1000;
 
 	private ArrayDeque<Unit> activeDefenders;
 	private ArrayDeque<Unit> toSpawn;
@@ -34,40 +35,45 @@ public class Wave {
 	private static TimerTask spawn;
 
 	/**
-	 * <b>Wave</b>
-	 * <p>
 	 * Constructor sets up the current wave with a call to createWave()
 	 */
 	private Wave() {
 		this.activeDefenders = new ArrayDeque<Unit>();
 		this.toSpawn = new ArrayDeque<Unit>();
 		this.createWave(this.currentWave);
-		this.spawn = new TimerTask(){
-				@Override
-				public void run() {
-					addDefender();
-				}
-		};
-		this.timer.scheduleAtFixedRate(spawn , 2 * 1000, 2 * 1000); // spawns new unit every 2 seconds
 	}
-	
+
+	public int start() {
+
+		spawn = new TimerTask() {
+			@Override
+			public void run() {
+				addDefender();
+			}
+		};
+		// start game
+		timer.scheduleAtFixedRate(spawn, 2 * 1000, 2 * 1000); // spawns new unit
+																// every 2
+																// seconds
+
+		return currentWave;
+	}
 
 	public ArrayDeque<Unit> getActiveDefenders() {
 		return this.activeDefenders;
 	}
-	
-	public int getnumDefenders(){
+
+	public int getnumDefenders() {
 		return numArchers + numFighters + numHorsemen + numKnights;
 	}
 
 	public static synchronized Wave getInstance() {
-		if(instance == null){
+		if (instance == null) {
 			return instance = new Wave();
 		}
 		return instance;
 	}
 
-	
 	public void createWave(int wave) {
 		switch (wave) { // set wave sizes
 		case 1:
@@ -109,13 +115,13 @@ public class Wave {
 			break;
 		}
 
-		for (int i = 0; i < this.numFighters/2; i++) {
+		for (int i = 0; i < this.numFighters / 2; i++) {
 			this.toSpawn.add(new Fighter(false));
 		}
 		for (int i = 0; i < this.numArchers; i++) {
 			this.toSpawn.add(new Archer(false));
 		}
-		for (int i = 0; i < this.numFighters/2; i++) {
+		for (int i = 0; i < this.numFighters / 2; i++) {
 			this.toSpawn.add(new Fighter(false));
 		}
 		for (int i = 0; i < this.numHorsemen; i++) {
@@ -133,13 +139,12 @@ public class Wave {
 	public void nextWave() {
 		if (this.waveOver()) {
 			this.currentWave++;
+			this.prize += prize * .20; // 20% more earnings each level
 			this.createWave(this.currentWave);
 		}
 	}
-	
-	/**
-	 * 
-	 * */
+
+	// used cohesively to determine the end of a level
 	public boolean waveOver() {
 		return (this.toSpawn.size() == 0) && (this.activeDefenders.size() == 0);
 	}
@@ -152,7 +157,6 @@ public class Wave {
 	}
 
 	/**
-	 *
 	 * Spawns Defensive Units
 	 */
 	public void addDefender() {
@@ -160,6 +164,16 @@ public class Wave {
 			System.out.println("Spawned a " + this.toSpawn.getFirst().getClass().getSimpleName());
 			this.activeDefenders.add(this.toSpawn.remove());
 		}
+	}
+
+	public int collectLoot() {
+
+		return prize;
+
+	}
+
+	public int getLevel() {
+		return currentWave;
 	}
 
 }
