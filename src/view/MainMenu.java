@@ -1,6 +1,5 @@
 package view;
 
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -30,7 +29,6 @@ private Group root;
 public MainMenu(SceneManager sceneManager) {
 	
 	this.sceneManager = sceneManager;
-	
 }
 
 	@Override
@@ -38,7 +36,6 @@ public MainMenu(SceneManager sceneManager) {
 
 		root = new Group();	
 		menuScene = new Scene(root, width, height);
-
 		
 		addBackground();
 		addStartButton();
@@ -52,11 +49,9 @@ public MainMenu(SceneManager sceneManager) {
 		Button startButton = new Button();
 		startButton.setText("Click to Begin Battle");
 		startButton.setLayoutX(450);
-		startButton.setLayoutY(150);
 		startButton.setMinWidth(150);
 		startButton.setMinHeight(30);
 		startButton.setFont(Font.font("Verdana", 12));
-		
 		startButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -69,6 +64,7 @@ public MainMenu(SceneManager sceneManager) {
 		
 		root.getChildren().add(startButton);
 	}
+	
 	private void addAboutButton() {
 		Button aboutButton = new Button();
 		aboutButton.setText("About T.A.G Team");
@@ -107,17 +103,12 @@ public MainMenu(SceneManager sceneManager) {
 	
 	private void addBackground() {
 		//load the image
-			Image background = new Image("img/background.jpg");
+			Image background = new Image("../libraries/img/background.jpg");
 			ImagePattern background1 = new ImagePattern(background);
 			System.out.println("Is Loaded: " +background.isError());
 			ImageView iv = new ImageView();
 			iv.setImage(background);
 		
 			menuScene.setFill(background1);
-			
-			
-
-	        
-		    
 		}
 }

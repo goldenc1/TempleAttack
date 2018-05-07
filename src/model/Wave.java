@@ -26,9 +26,10 @@ public class Wave {
 	private int numHorsemen;
 	private int prize = 1000;
 
-	private ArrayDeque<Unit> activeDefenders;
-	private ArrayDeque<Unit> toSpawn;
-	private ArrayDeque<Unit> totalDefenders;
+	private ArrayDeque<Unit> activeDefenders; // queue for units live on the
+												// battle scene
+	private ArrayDeque<Unit> toSpawn; // FIFO queue for spawning units
+	private ArrayDeque<Unit> totalDefenders; // queue for defenders
 	private int currentWave = 1;
 	private static Wave instance;
 	private static Timer timer = new Timer();
@@ -38,6 +39,13 @@ public class Wave {
 	 * Constructor sets up the current wave with a call to createWave()
 	 */
 	private Wave() {
+		this.activeDefenders = new ArrayDeque<Unit>();
+		this.toSpawn = new ArrayDeque<Unit>();
+		this.createWave(this.currentWave);
+	}
+
+	private Wave(boolean restart) {
+		this.
 		this.activeDefenders = new ArrayDeque<Unit>();
 		this.toSpawn = new ArrayDeque<Unit>();
 		this.createWave(this.currentWave);
@@ -153,7 +161,7 @@ public class Wave {
 	 * Resets the current wave
 	 */
 	public static void reset() {
-		Wave.instance = new Wave();
+		Wave.instance = new Wave(currentWave);
 	}
 
 	/**
