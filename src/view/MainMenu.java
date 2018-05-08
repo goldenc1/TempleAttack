@@ -1,5 +1,8 @@
 package view;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -103,7 +106,7 @@ public MainMenu(SceneManager sceneManager) {
 	
 	private void addBackground() {
 		//load the image
-			Image background = new Image("../libraries/img/background.jpg");
+			Image background = new Image("file:libraries/img/background.jpg");
 			ImagePattern background1 = new ImagePattern(background);
 			System.out.println("Is Loaded: " +background.isError());
 			ImageView iv = new ImageView();

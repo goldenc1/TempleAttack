@@ -67,7 +67,7 @@ public class Main extends Application{
 	
 private void addMusic() {
 		
-		Media sound = new Media(Paths.get("src/sound/GloomyMeadows.mp3").toUri().toString());
+		Media sound = new Media(Paths.get("libraries/sound/GloomyMeadows.mp3").toUri().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		
 			
